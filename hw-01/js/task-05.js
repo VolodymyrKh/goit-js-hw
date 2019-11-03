@@ -1,39 +1,47 @@
 "use strict";
 
 let price;
-let countryToDeliver = prompt("Укажите страну для доставки", "");
+const PRINT_COUNTRY ='Напишите название страны в которую нужно доставить товар';
+const CANCEL_BY_USER = 'Отменено пользователем!';
+const NOT_DELIVERY = 'В вашей стране доставка не доступна';
+const CHINA = 'КИТАЙ';
+const CHILLI = 'ЧИЛИ';
+const INDIA = 'ИНДИЯ';
+const JAMAICA = 'ЯМАЙКА';
+const AUSTRALIA = 'АВСТРАЛИЯ'
+let countryToDeliver = prompt(PRINT_COUNTRY);
 
 if (countryToDeliver) {
   countryToDeliver = countryToDeliver.toUpperCase();
 
   switch (countryToDeliver) {
-    case "КИТАЙ":
+    case CHINA:
       price = 100;
       countryToDeliver = "Китай";
       break;
 
-    case "ЧИЛИ":
+    case CHILLI:
       price = 250;
       countryToDeliver = "Чили";
       break;
 
-    case "АВСТРАЛИЯ":
+    case AUSTRALIA:
       price = 170;
       countryToDeliver = "Австралию";
       break;
 
-    case "ИНДИЯ":
+    case INDIA:
       price = 80;
       countryToDeliver = "Индию";
       break;
 
-    case "ЯМАЙКА":
+    case JAMAICA:
       price = 120;
       countryToDeliver = "Ямайку";
       break;
 
     default:
-      alert("В вашей стране доставка не доступна");
+      alert(NOT_DELIVERY);
   }
 
   if (price) {
