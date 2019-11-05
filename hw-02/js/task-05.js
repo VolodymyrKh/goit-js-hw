@@ -3,12 +3,8 @@ const checkForSpam = function(str) {
   const SPAM = "spam";
   const SALE = "sale";
   const strLowerCase = str.toLowerCase();
-  let bool = false;
-  if (strLowerCase.includes(SPAM) || strLowerCase.includes(SALE)) {
-    bool = true;
-  }
 
-  return bool;
+  return (strLowerCase.includes(SPAM) || strLowerCase.includes(SALE));
 };
 
 console.log(checkForSpam("Latest technology news"));

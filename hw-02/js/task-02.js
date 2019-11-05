@@ -1,9 +1,12 @@
 "use strict";
-const calculateEngravingPrice = function(message, pricePerWord) {
-  const words = message.split(" ");
-  let totalPrice = words.length * pricePerWord;
-  return totalPrice;
-};
+// const calculateEngravingPrice = function(message, pricePerWord) {
+//   const words = message.split(" ");
+//   let totalPrice = words.length * pricePerWord;
+//   return totalPrice;
+// };
+
+const calculateEngravingPrice = (message, pricePerWord) =>
+  message.split(" ").length * pricePerWord;
 
 console.log(
   "Загальна вартість гравіювання: ",

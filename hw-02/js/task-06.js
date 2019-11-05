@@ -4,10 +4,10 @@ let total = 0;
 const numbers = [];
 
 do {
-  input = prompt("Введите число", "");
+  input = prompt("ВВедіть число", "");
   let arrayItem = Number(input);
-  if (!arrayItem && input !== null) {
-    alert("Было введено не число, попробуйте еще раз");
+  if (!arrayItem && input !== null && arrayItem !== 0) {
+    alert("Ви ввели не число, спробуйте еще раз");
   } else if (input !== null) {
     numbers.push(arrayItem);
   }

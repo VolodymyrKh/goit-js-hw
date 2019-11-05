@@ -1,12 +1,21 @@
 "use strict";
+// const formatString = function(string) {
+//   const chars = string.split("");
+//   let newString;
+//   if (chars.length > 40) {
+//     chars.length = 40;
+//     chars.push("...");
+//   }
+//   newString = chars.join("");
+//   return newString;
+// };
+
 const formatString = function(string) {
-  const chars = string.split("");
-  let newString;
-  if (chars.length > 40) {
-    chars.length = 40;
-    chars.push("...");
+  let newString = string;
+  if (string.length > 40) {
+    newString = `${string.slice(0, 40)}...`;
   }
-  newString = chars.join("");
+
   return newString;
 };
 
