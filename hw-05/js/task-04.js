@@ -18,10 +18,10 @@ class StringBuilder {
     this._value = `${str}${this._value}`;
   }
 
-  pad(str, callAfter, callBefore) {
+  pad(str) {
     // this._value = `${str}${this._value}${str}`; - если так, то pad(str) и вызов builder.pad("="), console.log(builder.value);
-    callAfter(str);
-    callBefore(str);
+    this.append(str);
+    this.prepend(str);
   }
 }
 
@@ -36,5 +36,5 @@ console.log(builder.value); // '.^'
 builder.prepend("^");
 console.log(builder.value); // '^.^'
 
-builder.pad("=", builder.append.bind(builder), builder.prepend.bind(builder));
+builder.pad("=");
 console.log(builder.value); // '=^.^='
