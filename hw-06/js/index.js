@@ -87,93 +87,90 @@ const users = [
 ];
 
 // ---- names ------
-const getUserNames = users => {
-  return users.map(user => user.name);
-};
+const getUserNames = users => users.map(({ name }) => name);
 
 console.log(getUserNames(users));
 
 // ----- eyecolor -------
-const getUsersWithEyeColor = (users, color) => {
-  return users.filter(user => user.eyeColor === color);
-};
+const getUsersWithEyeColor = (users, color) =>
+  users.filter(({ eyeColor }) => eyeColor === color);
 
 console.log(getUsersWithEyeColor(users, "blue"));
 
 // ------ gender names -----------
-const getUsersWithGender = (users, gender) => {
-  return users.filter(user => user.gender === gender).map(user => user.name);
-};
+const getUsersWithGender = (users, genderToFilter) =>
+  users
+    .filter(({ gender }) => gender === genderToFilter)
+    .map(({ name }) => name);
 
 console.log(getUsersWithGender(users, "male"));
 
 // ------ inactive users -------
-const getInactiveUsers = users => {
-  return users.filter(user => user.isActive === false);
-};
+const getInactiveUsers = users => users.filter(({ isActive }) => !isActive);
 
 console.log(getInactiveUsers(users));
 
 // ------ find by e-mail ------
-const getUserWithEmail = (users, email) => {
-  return users.find(user => user.email === email);
-};
+const getUserWithEmail = (users, e_mail) =>
+  users.find(({ email }) => email === e_mail);
 
 console.log(getUserWithEmail(users, "shereeanthony@kog.com"));
 console.log(getUserWithEmail(users, "elmahead@omatom.com"));
 
 // ------- min < age < max ---------
-const getUsersWithAge = (users, min, max) => {
-  return users.filter(user => min < user.age && user.age < max);
-};
+const getUsersWithAge = (users, min, max) =>
+  users.filter(({ age }) => min <= age && age <= max);
 
 console.log(getUsersWithAge(users, 20, 30));
 
 console.log(getUsersWithAge(users, 30, 40));
 
 // ------ total balance --------------
-const calculateTotalBalance = users => {
-  return users.reduce((total, user) => total + user.balance, 0);
-};
+const calculateTotalBalance = users =>
+  users.reduce((total, { balance }) => total + balance, 0);
 
 console.log(calculateTotalBalance(users));
 
 // --------- users with common friend ---------
-const getUsersWithFriend = (users, friendName) => {
-  return users.reduce((acc, user) => {
-    if (user.friends.includes(friendName)) {
-      acc.push(user.name);
-    }
-    return acc;
-  }, []);
-};
+
+// const getUsersWithFriend = (users, friendName) => {
+//   return users.reduce((acc, user) => {
+//     if (user.friends.includes(friendName)) {
+//       acc.push(user.name);
+//     }
+//     return acc;
+//   }, []);
+// };
+
+const getUsersWithFriend = (users, friendName) =>
+  users
+    .filter(({ friends }) => friends.includes(friendName))
+    .map(({ name }) => name);
 
 console.log(getUsersWithFriend(users, "Briana Decker"));
 console.log(getUsersWithFriend(users, "Goldie Gentry"));
 
 // --------- sorted by nr of friends ---------
-const getNamesSortedByFriendsCount = users => {
-  return [...users]
+const getNamesSortedByFriendsCount = users =>
+  [...users]
     .sort(
       (prevUser, nextUser) => prevUser.friends.length - nextUser.friends.length
     )
-    .map(user => user.name);
-};
+    .map(({ name }) => name);
 
 console.log(getNamesSortedByFriendsCount(users));
 
 // --------- unique sorted skills ---------------
-const getSortedUniqueSkills = users => {
-  return users
-    .reduce((acc, user) => [...acc, ...user.skills], [])
-    .reduce((acc, skill) => {
-      if (!acc.includes(skill)) {
-        acc.push(skill);
-      }
-      return acc;
-    }, [])
-    .sort();
-};
+const getSortedUniqueSkills = users =>
+  users
+    .reduce((acc, { skills }) => [...acc, ...skills], [])
+    // .reduce((acc, skill) => {
+    //   if (!acc.includes(skill)) {
+    //     acc.push(skill);
+    //   }
+    //   return acc;
+    // }, [])
+    .filter((skill, index, arr) => arr.indexOf(skill) === index)
+    .sort((a, b) => a.localeCompare(b, "en"));
 
 console.log(getSortedUniqueSkills(users));
-
