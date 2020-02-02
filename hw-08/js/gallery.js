@@ -1,6 +1,6 @@
 "use strict";
 
-import items from "/js/gallery-items.js";
+import items from "/JS/gallery-items.js";
 
 const gallery = document.querySelector(".js-gallery");
 const modal = document.querySelector(".js-lightbox");
@@ -71,3 +71,4 @@ function createGallery(arr) {
     ""
   );
 }
+
