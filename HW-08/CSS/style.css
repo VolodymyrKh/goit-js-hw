@@ -129,7 +129,7 @@ html {
     cursor: pointer;
     transition: background-color 200ms ease-in-out;
     outline: none;
-    background-image: url('/IMAGES/icon-close.svg');
+    background-image: url('./IMAGES/icon-close.svg');
     background-position: center;
     background-size: 60%;
     background-repeat: no-repeat;
